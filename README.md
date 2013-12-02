@@ -47,8 +47,9 @@ The following formats are supported natively by SQLite and provide optimal effic
 
 The following formats are supported by the API but incur a performance penalty:
 
-    +00       // ~1.8x base speed
-    +0000     // ~3x base speed
+    +00       // ~1.3x base speed
+    +01       // Non-zero offset, ~3x base speed
+    +0000     // ~4x base speed
 
 Thread Safety
 ------------
