@@ -136,13 +136,23 @@
 
 - (void)testPerformance
 {
-    // Fast case
+    // Base (fastest) case
     NSDate *start = [NSDate date];
     for (int n = 0; n < 50000; n++) {
-        [YPFastDateParser dateFromString:@"2012-10-27 07:00:00+00"];
+        [YPFastDateParser dateFromString:@"2012-10-27 07:00:00Z"];
     }
     NSDate *end = [NSDate date];
     NSTimeInterval duration = [end timeIntervalSinceDate:start];
+    NSLog(@"Base case duration: %f", duration);
+    XCTAssertTrue(duration < 0.25f, @"Base case duration %f is too slow!", duration);
+    
+    // Fast case
+    start = [NSDate date];
+    for (int n = 0; n < 50000; n++) {
+        [YPFastDateParser dateFromString:@"2012-10-27 07:00:00+00"];
+    }
+    end = [NSDate date];
+    duration = [end timeIntervalSinceDate:start];
     NSLog(@"Fast case duration: %f", duration);
     XCTAssertTrue(duration < 0.4f, @"Fast case duration %f is too slow!", duration);
     
