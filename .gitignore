@@ -1,0 +1,14 @@
+# Ignore common tool auto-generated files.
+*~
+*.swp
+*.DS_Store?
+.DS_Store
+Icon?
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Xcode
+xcuserdata
+
