@@ -12,6 +12,8 @@ The API
 
     NSDate *date = [YPFastDateParser dateFromString:@""];
 
+Returns nil if the string cannot be parsed into a date.
+
 Date Formats
 ------------
 
@@ -47,4 +49,14 @@ The following formats are supported by the API but incur a performance penalty:
 
     +00       // ~1.8x base speed
     +0000     // ~3x base speed
+
+Thread Safety
+------------
+
+This API is **not** thread-safe (yet).  
+
+If you are using this API across multiple threads, you are strongly advised to create a separate instance of the parser for each thread:
+
+    YPFastDateParser *fastParser = [YPFastDateParser new];
+    NSDate *date = [fastParser dateFromString:aString];
 
